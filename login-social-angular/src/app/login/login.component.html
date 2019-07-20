@@ -1,0 +1,30 @@
+<div class="login-container">
+  <div class="login-content">
+    <h1 class="login-title">Login</h1>
+    <div class="social-login">
+      <a class="btn btn-block social-btn google" href="{{configurationService.google_auth_url}}">
+        <img src="assets/img/google-logo.png" alt="Google" /> Log in with Google</a>
+      <a class="btn btn-block social-btn facebook" href={{configurationService.facebook_auth_url}}>
+        <img src="assets/img/fb-logo.png" alt="Facebook" /> Log in with Facebook</a>
+      <a class="btn btn-block social-btn github" href={{configurationService.github_auth_url}}>
+        <img src="assets/img/github-logo.png" alt="Github" /> Log in with Github</a>
+    </div>
+    <div class="or-separator">
+      <span class="or-text">OR</span>
+    </div>
+    <div>
+      <form>
+        <div class="form-item">
+          <input type="email" name="email" class="form-control" placeholder="Email" required />
+        </div>
+        <div class="form-item">
+          <input type="password" name="password" class="form-control" placeholder="Password" required />
+        </div>
+        <div class="form-item">
+          <button type="submit" class="btn btn-block btn-primary">Login</button>
+        </div>
+      </form>
+    </div>
+    <span class="signup-link">New user? <a>Sign up!</a></span>
+  </div>
+</div>
