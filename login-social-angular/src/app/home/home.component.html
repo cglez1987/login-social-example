@@ -1,5 +1,10 @@
 <p>home works!</p>
 
-<div>Token: {{token}}</div>
-<div>Error: {{error}}</div>
+<div>User ID: {{user.id}}</div>
+<div>User Email: {{user.email}}</div>
+<div>User Name: {{user.name}}</div>
+<div>User Provider: {{user.provider}}</div>
+<div><img src="{{user.imageUrl}}"/></div>
 
+
+<span><a href="#" (click)="logout()">Log Out</a></span>

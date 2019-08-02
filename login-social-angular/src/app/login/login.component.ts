@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from '../_services/authentication.service';
 import { AlertService } from '../_services/alert.service';
 import { ConfigurationService } from '../_services/configuration.service';
+import { UserService } from '../user/user.service';
 
 @Component({
   selector: 'app-login',
@@ -24,10 +25,11 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private authenticationService: AuthenticationService,
     private alertService: AlertService,
-    private configurationService:ConfigurationService
+    private configurationService:ConfigurationService,
+    private userService: UserService
   ) {
     // redirect to home if already logged in
-    if (this.authenticationService.currentUserValue) {
+    if (this.userService.currentUserValue) {
       this.router.navigate(['/']);
     }
   }

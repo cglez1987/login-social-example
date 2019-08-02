@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ConfigurationService } from '../_services/configuration.service';
+import { UserService } from '../user/user.service';
+import { User } from '../user/user';
+import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-oauth2',
@@ -11,24 +15,30 @@ export class Oauth2Component implements OnInit {
   token: string;
   error: string;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+    private confService: ConfigurationService,
+    private userService: UserService) { }
 
   ngOnInit() {
 
     this.token = this.getUrlParameter("token");
     this.error = this.getUrlParameter("error");
 
-    this.router.navigate(["home"]);
+    if (this.token) {
+      sessionStorage.setItem("access_token", this.token);
+      this.userService.getUserInfo();
+    } else {
+      console.log(this.error);
+    }
+
 
   }
 
   getUrlParameter(name) {
     name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-    console.log("Name devuelto: " + name);
     var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
 
     var results = regex.exec(location.href);
-    console.log("Resultssss" + results);
     return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
   };
 }
